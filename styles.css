@@ -1,0 +1,248 @@
+ @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&display=swap');
+
+:root {
+ font-family: 'DM Sans', sans-serif;
+  margin: 0;
+  background-color: #f8f8f9;
+} 
+
+:root {
+  --primary-subdued: hsl(254, 88%, 90%);
+  --primary-base: hsl(256, 67%, 59%);
+  --accent-subdued: hsl(31, 66%, 93%);
+  --accent-base: hsl(39, 100%, 71%);
+  --white: hsl(0, 0%, 100%);
+  --off-white: hsl(0, 0%, 96%);
+  --black: hsl(0, 0%, 7%);
+}
+
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+}
+
+@layer base {
+  html {
+    font-family: "DM Sans", sans-serif;
+    line-height: 1.3;
+  }
+
+  body {
+    margin: 32px;
+    color: var(--black);
+    font-size: var(--fs-reg);
+    background: var(--off-white);
+  }
+
+  .heading {
+    font-size: var(--heading-font-size, var(--fs-md));
+    font-weight: 500;
+    color: var(--heading-foreground, inherit);
+  }
+
+  .description {
+    font-size: 1rem;
+    color: hsl(0, 0%, 40%);
+  }
+}
+
+@layer layout {
+  .grid-container {
+    display: grid;
+    gap: 24px;
+    max-inline-size: 1200px;
+    margin-inline: auto;
+    grid-template-areas:
+      'one'
+      'two'
+      'three'
+      'four'
+      'five'
+      'six'
+      'seven'
+      'eight';
+
+    @media (width > 660px) {
+      grid-template-areas:
+        "one one"
+        "two three"
+        "four six"
+        "four seven"
+        "five eight";
+    }
+
+    @media (width > 960px) {
+      grid-template-areas:
+        "seven one one four"
+        "seven two three four"
+        "eight two three four"
+        "eight six five five";
+    }
+  }
+
+  .grid-container > .item {
+    color: var(--bento-card-foreground, var(--black));
+    background-color: var(--bento-card-surface, var(--white));
+    padding:  20px;
+    border-radius: 15px;
+    overflow: clip;
+    display: grid;
+    gap: 22px;
+    align-content: start;
+    align-items: start;
+    justify-items: start;
+    text-align:  start;
+  }
+
+  .grid-container img {
+    max-width: var(--bento-card-image-width, 100%);
+    width: var(--bento-card-image-width, 100%);
+    order: var(--bento-card-image-order);
+  }
+
+
+.item-1 .heading {
+  color: white;
+  font-size: 3.5rem;
+}
+.item-1 .highlight {
+    color: #ffc445;
+}
+
+.item-1 .description {
+   color: white;
+}
+
+  .grid-container > .item-1 {
+     background-color: #4e38b1;
+      color: white;
+      place-items: center;
+      text-align: center;
+    --bento-card-surface: var(--primary-base);
+    
+  
+    @media (width > 960px) {
+      --bento-card-image-width: 65%;
+    }
+    
+    grid-area: one;
+  }
+
+  .grid-container > .item-2 {
+    font-size: 1.5rem;
+    --bento-card-image-order: -1;
+    grid-area: two;
+
+    @media (width > 960px) {
+      --bento-card-image-width: 150%;
+    }
+
+    > img {
+      filter: drop-shadow(0 0 1rem hsl(0 0% 0% / .25));
+      border-radius: 100vw;
+    }
+  }
+
+  .grid-container > .item-3 {
+    --bento-card-surface: var(--accent-base);
+    grid-area: three;
+
+    > img {
+      --bento-card-image-width: 75%;
+      margin-bottom: -65px;
+
+      @media (width > 960px) {
+        --bento-card-image-width: 100%;
+        margin-bottom: -125px;
+      }
+    }
+  }
+
+  .grid-container > .item-4 {
+    font-size: 1.5rem;
+    --bento-card-surface: var(--primary-subdued);
+    grid-area: four;
+
+    @media (width > 960px) {
+      --bento-card-image-width: 180%;
+      --bento-card-horizontal-alignment: start;
+      --bento-card-vertical-alignment: center;
+    }
+  }
+
+.grid-container .item-5 {
+    background-color: #6c4cff;
+    color: white;
+    grid-column: span 2;
+
+}
+
+ .item-5 .content {
+    display: flex;
+    align-items: center; 
+    gap: 15px; 
+}
+
+.item-5 .content img {
+    width: 300px;
+    height: 250px;
+    display: inline-block;  
+}
+
+.item-5 .content .description {
+    flex-shrink: 3;
+    color: white;
+    font-size: 1.5rem; 
+}
+  
+
+    @media (width > 960px) {
+  }
+
+  .grid-container > .item-6 {
+    font-size: 1.5rem;
+    --heading-font-size: var(--fs-xl);
+    --bento-card-image-width: 60%;
+    grid-area: six;
+
+    @media (width > 960px) {
+      --bento-card-image-width: 80%;
+    }
+  }
+
+  .grid-container > .item-7 {
+  background-color: #fff2e5;
+  font-size: 2rem; 
+    --bento-card-surface: var(--accent-subdued);
+    --bento-card-image-width: 60%;
+    grid-area: seven;
+  }
+ .item-7 .highlight {
+      color:#4e38b1;
+ }
+    @media (width > 960px) {
+      /* --bento-card-image-width: 100%;
+      --bento-card-vertical-alignment: center; */
+    }
+
+  .grid-container > .item-8 {
+    font-size: 1.5rem;
+    --bento-card-surface: var(--accent-base);
+    --bento-card-image-width: 60%;
+    grid-area: eight;
+
+    @media (width > 960px) {
+      --bento-card-image-width: 105%;
+      --bento-card-vertical-alignment: center;
+    }
+  }
+}
